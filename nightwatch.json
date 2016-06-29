@@ -1,6 +1,6 @@
 {
   "src_folders" : ["tests"],
-  "output_folder" : "test/output",
+  "output_folder" : "tests/output",
   "page_objects_path": "test/pages",
   "custom_commands_path" : [
     "test/custom-commands",
@@ -14,7 +14,7 @@
 
   "selenium" : {
     "start_process" : true,
-    "server_path" : "/opt/selenium_server/selenium-server-standalone-2.48.2.jar",
+    "server_path" : "/opt/selenium_server/selenium-server-standalone-2.53.0.jar",
     "log_path" : "",
     "host" : "127.0.0.1",
     "port" : 4444,
