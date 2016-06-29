@@ -1,20 +1,26 @@
 {
-  "src_folders" : ["tests"],
-  "output_folder" : "reports",
-  "custom_commands_path" : "",
-  "custom_assertions_path" : "",
-  "page_objects_path" : "",
+  "src_folders" : ["test/tests"],
+  "output_folder" : "test/output",
+  "page_objects_path": "test/pages",
+  "custom_commands_path" : [
+    "test/custom-commands",
+    "node_modules/testarmada-magellan-nightwatch/lib/commands"
+    ],
+  "custom_assertions_path" : [
+    "test/custom-assertions",
+    "node_modules/testarmada-magellan-nightwatch/lib/assertions"
+    ],
   "globals_path" : "",
 
   "selenium" : {
-    "start_process" : false,
-    "server_path" : "",
+    "start_process" : true,
+    "server_path" : "/opt/selenium_server/selenium-server-standalone-2.48.2.jar",
     "log_path" : "",
     "host" : "127.0.0.1",
     "port" : 4444,
     "cli_args" : {
-      "webdriver.chrome.driver" : "",
-      "webdriver.ie.driver" : ""
+      "webdriver.chrome.driver" : "/opt/chrome_driver/chromedriver",
+      "webdriver.firefox.driver" : ""
     }
   },
 
@@ -29,9 +35,17 @@
         "path" : ""
       },
       "desiredCapabilities": {
-        "browserName": "firefox",
+        "browserName": "chrome",
         "javascriptEnabled": true,
         "acceptSslCerts": true
+      },
+
+      "globals": {
+        "BASE_URL": "http://app.192.168.111.51.xip.io/",
+        "CASES_PATH": "/vagrant/cases/",
+        "SCREENSHOT_PATH": "./test",
+        "VALID_USERNAME": "admin",
+        "VALID_PASSWORD": "password"
       }
     },
 
@@ -39,7 +53,28 @@
       "desiredCapabilities": {
         "browserName": "chrome",
         "javascriptEnabled": true,
-        "acceptSslCerts": true
+        "acceptSslCerts": true,
+        "chromeOptions": {
+          "args": ["start-fullscreen"]
+        }
+      }
+    },
+
+    "firefox" : {
+      "desiredCapabilities": {
+        "browserName": "firefox",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true,
+        "firefoxOptions": {
+          "args": ["start-fullscreen"]
+        }
+      }
+    },
+
+    "local" : {
+      "globals": {
+        "BASE_URL": "http://localhost:3333",
+        "SCREENSHOT_PATH": "./test"
       }
     }
   }
